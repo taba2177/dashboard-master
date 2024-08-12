@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://website-b93f2faa.pkh.sga.mybluehost.me'),
+    'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', "//"),
 
@@ -232,7 +232,7 @@ return [
         'UserSystemInfoHelper'=> \App\Helpers\UserSystemInfoHelper::class,
         'UploadFilesHelper'=> \App\Helpers\UploadFilesHelper::class,
         'Carbon'=>  Carbon\Carbon::class,
-        'ImageResizer'=>TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
+        // 'ImageResizer'=>TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Location'=> Stevebauman\Location\Facades\Location::class,
     ],
