@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://website-b93f2faa.pkh.sga.mybluehost.me'),
 
     'asset_url' => env('ASSET_URL', "//"),
 
