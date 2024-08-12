@@ -232,7 +232,7 @@ return [
         'UserSystemInfoHelper'=> \App\Helpers\UserSystemInfoHelper::class,
         'UploadFilesHelper'=> \App\Helpers\UploadFilesHelper::class,
         'Carbon'=>  Carbon\Carbon::class,
-        'ImageResizer'=>TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
+        // 'ImageResizer'=>TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Location'=> Stevebauman\Location\Facades\Location::class,
     ],
