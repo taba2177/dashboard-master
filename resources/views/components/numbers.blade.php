@@ -1,74 +1,37 @@
-     <!--Start Intro One-->
-     <section class="intro-one">
-        <div class="shape2"><img src="assets/images/shapes/intro-v1-shape2.png" alt=""></div>
-        <div class="container">
-            <div class="row">
-                <!--Start Intro One Single-->
-                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.1s">
-                    <div class="intro-one__single">
-                        <div class="intro-one__single-img">
-                            <div class="inner">
-                                <img src="assets/images/resources/intro-v1-img1.jpg" alt="#">
-                            </div>
-                            <div class="icon-box">
-                                <span class="icon-privacy"></span>
-                            </div>
-                        </div>
-
-                        <div class="intro-one__single-content text-center">
-                            <div class="shape1"><img src="assets/images/shapes/intro-v1-shape1.png" alt="#"></div>
-                            <h2><a href="#">Digital Security</a></h2>
-                            <p>Lorem ipsum dolor sit amet consect <br>
-                                etur notted adipisicing</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End Intro One Single-->
-
-                <!--Start Intro One Single-->
-                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
-                    <div class="intro-one__single">
-                        <div class="intro-one__single-img">
-                            <div class="inner">
-                                <img src="assets/images/resources/intro-v1-img2.jpg" alt="#">
-                            </div>
-                            <div class="icon-box">
-                                <span class="icon-filter"></span>
-                            </div>
-                        </div>
-
-                        <div class="intro-one__single-content text-center">
-                            <div class="shape1"><img src="assets/images/shapes/intro-v1-shape1.png" alt="#"></div>
-                            <h2><a href="#">Tech Solution</a></h2>
-                            <p>Lorem ipsum dolor sit amet consect <br>
-                                etur notted adipisicing</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End Intro One Single-->
-
-                <!--Start Intro One Single-->
-                <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.3s">
-                    <div class="intro-one__single">
-                        <div class="intro-one__single-img">
-                            <div class="inner">
-                                <img src="assets/images/resources/intro-v1-img3.jpg" alt="#">
-                            </div>
-                            <div class="icon-box">
-                                <span class="icon-laptop"></span>
-                            </div>
-                        </div>
-
-                        <div class="intro-one__single-content text-center">
-                            <div class="shape1"><img src="assets/images/shapes/intro-v1-shape1.png" alt="#"></div>
-                            <h2><a href="#">IT Outsourcing</a></h2>
-                            <p>Lorem ipsum dolor sit amet consect <br>
-                                etur notted adipisicing</p>
-                        </div>
-                    </div>
-                </div>
-                <!--End Intro One Single-->
-            </div>
+<section class="wrapper image-wrapper bg-auto no-overlay bg-image text-center bg-map" data-image-src="./assets/img/map.png">
+  <div class="container py-14 pt-md-16 pb-md-18">
+    <div class="row pt-md-12">
+      <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
+        <h2 class="fs-15 text-uppercase text-muted mb-3 text-center">مرحباً بك في مجتمعنا</h2>
+        <h3 class="display-4 mb-8 px-lg-12 text-center">تعرف على مجتمعنا في أرقام.</h3>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /column -->
+    <div class="row pb-md-12">
+      <div class="col-md-10 col-lg-9 col-xl-7 mx-auto">
+        <div class="row align-items-center counter-wrapper gy-4 gy-md-0">
+          <div class="col-md-4 text-center">
+            <h3 class="counter counter-lg text-primary text-center">+200</h3>
+            <p class="text-center">نجمة على جب هب</p>
+          </div>
+          <!--/column -->
+          <div class="col-md-4 text-center">
+            <h3 class="counter counter-lg text-primary text-center">+30.000</h3>
+            <p class="text-center">عضو في المجموعة</p>
+          </div>
+          <!--/column -->
+          <div class="col-md-4 text-center">
+            <h3 class="counter counter-lg text-primary text-center">+1000</h3>
+            <p class="text-center">نظام يستخدمها</p>
+          </div>
+          <!--/column -->
         </div>
-    </section>
-    <!--End Intro One-->
+        <!--/.row -->
+      </div>
+      <!-- /column -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</section>

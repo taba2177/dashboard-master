@@ -1,131 +1,8 @@
-<div class="custom-cursor__cursor"></div>
-<div class="custom-cursor__cursor-two"></div>
-
-
-<div class="preloader">
-    <div class="preloader__image"></div>
-</div>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf
 </form>
 
-
-
-    <!--Start Main Header One-->
-    <header class="main-header main-header-one clearfix">
-        <div class="main-header-one__top">
-            <div class="container">
-                <div class="main-header-one__top-inner">
-                    <div class="main-header-one__top-left">
-                        <div class="main-header-one__top-left-btn">
-                            <a href="{{ url("contact.html") }}">{{ __('toasl_maana') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="main-header-one__top-right">
-                        <div class="main-header__contact-info">
-                            <ul>
-                                <li>
-                                    <div class="inner">
-                                        <div class="icon-box">
-                                            <span class="icon-call">{{ __('') }}</span>
-                                        </div>
-                                        <div class="text-box">
-                                            <p>{{ __('llastfsar') }}</p>
-                                            <h4><a href="{{ url("tel:8857002451") }}">{{ __('088_57_00_24_51') }}</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="inner">
-                                        <div class="icon-box">
-                                            <span class="icon-email">{{ __('') }}</span>
-                                        </div>
-                                        <div class="text-box">
-                                            <p>{{ __('arsal_amyl') }}</p>
-                                            <h4><a href="{{ url("mailto:yourmail@email.com") }}">{{ __('helpus24_at_battourcom') }}</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="inner">
-                                        <div class="icon-box">
-                                            <span class="icon-clock2">{{ __('') }}</span>
-                                        </div>
-                                        <div class="text-box">
-                                            <p>{{ __('algmaa_mghlk') }}</p>
-                                            <h4>{{ __('alsbt_alkhmys600_800') }}</h4>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="main-header-one__bottom">
-            <nav class="main-menu clearfix">
-                <div class="main-menu__wrapper clearfix">
-                    <div class="container">
-                        <div class="main-header-one__bottom-inner">
-
-                            <div class="main-header-one__bottom-left">
-                                <div class="logo-one">
-                                    <a href="/">
-                                        <img src="{{$settings['get_website_wide_logo']}}" style="width: 105px;" alt="{{$settings['website_name']}}" >
-                                    </a>
-                                    {{-- <a href="{{ url("index.html") }}"><img src="{{ asset("/assets/images/resources/logo-1.png") }}" alt="#"></a> --}}
-                                </div>
-
-
-                                <div class="main-menu__main-menu-box">
-                                    <a href="{{ url("#") }}" class="mobile-nav__toggler"><i class="fa fa-bars">{{ __('') }}</i></a>
-                                    <ul class="main-menu__list">
-                                    @php
-                                    $menu = \App\Models\Menu::where('location',"NAVBAR")->with(['links'=>function($q){$q->orderBy('order','ASC');}])->first();
-                                    @endphp
-                                    @if($menu !=null)
-                                    @foreach($menu->links as $link)
-                                        <li>
-                                            <a href="{{$link->url}}">{{$link->title}}</a>
-                                        </li>
-                                        @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="main-header-one__bottom-right">
-                                <div class="main-header__search">
-                                    {{-- <a href="{{ url("#") }}" class="main-menu__search search-toggler icon-search">{{ __('') }}</a> --}}
-                                    <div>
-
-                                        <select class="changeLanguage">
-                                            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : ''}}>English</option>
-                                            <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : ''}}>عربي</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-
-    <div class="stricky-header stricky-header__one stricked-menu main-menu">
-        <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-    </div><!-- /.stricky-header -->
-
-
-{{-- <div class="col-12 fixed-top  main-nav shadow" style="background: #fff;padding: 3px 0px;min-height: 65px;">
+<div class="col-12 fixed-top  main-nav shadow" style="background: #fff;padding: 3px 0px;min-height: 65px;">
     <div class="container px-1 my-auto">
         <div class="col-12 row p-0">
             <div class="col-auto p-3 d-flex align-items-center hover-main-color-flexable" onclick="document.getElementById('aside-menu').classList.toggle('active');document.getElementById('body-overlay').classList.toggle('active');" style="cursor: pointer;">
@@ -218,8 +95,8 @@
             </div>
         </div>
     </div>
-</div> --}}
-{{-- <div id="aside-menu" class=" shadow">
+</div>
+<div id="aside-menu" class=" shadow">
     <div class="col-12 d-flex justify-content-between  align-items-center p-0 shadow" style="height:65px">
         <span class="px-3 font-1 kufi">
 
@@ -290,4 +167,4 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>

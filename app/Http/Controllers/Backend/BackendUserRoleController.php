@@ -21,13 +21,10 @@ class BackendUserRoleController extends Controller
 
     public function index(Request $request,User $user){
         $roles = Role::get();
-dd($roles);
-var_dump($roles);
         return view('admin.users.roles',compact('roles','user'));
     }
     public function update(Request $request,User $user){
-        $roles =array_map('intval',$request->roles);
-        $user->syncRoles($roles);
+        $user->syncRoles($request->roles);
 
         //$user->syncPermissions(DB::table('model_has_permissions')->whereIn('role_id',$request->roles)->pluck('permission_id'));
         toastr()->success("تمت العملية بنجاح");
