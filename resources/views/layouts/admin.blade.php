@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/dashboard.css')
-
+    
 
     <style type="text/css">
         html{
@@ -17,8 +17,8 @@
             --color-1: #fff;
             --color-2: #575f66;
             --border-color: #f1f1f1;
-            --bs-table-hover-color: #f7f7f7!important;
-        }
+            --bs-table-hover-color: #f7f7f7!important; 
+        } 
     </style>
     @php
     $page_title="لوحة التحكم";
@@ -48,7 +48,7 @@
             --color-1: #fff;
             --color-2: #f1f1f1;
             --border-color: #282b2f;
-            --bs-table-hover-color: #f7f7f7!important;
+            --bs-table-hover-color: #f7f7f7!important; 
         }
         .select2-dropdown,.select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--multiple .select2-selection__choice{
             background-color: var(--background-0)!important;
@@ -192,7 +192,7 @@
                 </a>
                 <div class="col-12 px-0 mt-2 text-center" style="color: #232323;">
                     مرحباً {{auth()->user()->name}}
-                </div>
+                </div> 
             </div>
             <div class="col-12 px-0">
 
@@ -203,11 +203,11 @@
                     <a href="{{route('admin.index')}}" class="col-12 px-0" >
                         <div class="col-12 item-container px-0 d-flex" >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-home font-2"> </span>
+                                <span class="fal fa-home font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                 الرئيسية
-                            </div>
+                            </div> 
                         </div>
                     </a>
 
@@ -216,11 +216,11 @@
                     <a href="{{route('admin.roles.index')}}" class="col-12 px-0" >
                         <div class="col-12 item-container px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-key font-2"> </span>
+                                <span class="fal fa-key font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                 الصلاحيات
-                            </div>
+                            </div> 
                         </div>
                     </a>
                     @endcan
@@ -228,17 +228,17 @@
                     <a href="{{route('admin.users.index')}}" class="col-12 px-0" >
                         <div class="col-12 item-container px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-users font-2"> </span>
+                                <span class="fal fa-users font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                 المستخدمين
-                            </div>
+                            </div> 
                         </div>
                     </a>
                     @endcan
+                    
 
-
-
+                    
 
                     @foreach($plugins as $plugin)
                         @if($plugin->get('type')=="main")
@@ -246,11 +246,11 @@
                                 <a href="{{route('admin.'.$plugin->get('route').'.index')}}" class="col-12 px-0" >
                                     <div class="col-12 item-container px-0 d-flex " >
                                         <div style="width: 50px" class="px-3 text-center">
-                                            <span class="{{$plugin->get('icon')}} font-2"> </span>
+                                            <span class="{{$plugin->get('icon')}} font-2"> </span> 
                                         </div>
                                         <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                             {{$plugin->get('title')}}
-                                        </div>
+                                        </div> 
                                     </div>
                                 </a>
                             @endcan
@@ -265,11 +265,11 @@
                         <div class="col-12 item px-0 d-flex row " >
                             <div class="col-12 d-flex px-0 item-container">
                                 <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-newspaper font-2"> </span>
+                                    <span class="fal fa-newspaper font-2"> </span> 
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
                                     المحتوى
-                                </div>
+                                </div> 
                             </div>
                             <div class="col-12 px-0" >
                                 <ul class="sub-item font-1" style="list-style:none;">
@@ -287,7 +287,7 @@
                                         @endphp
                                         @if($article_comments)
                                         <span style="background: #d34339;border-radius: 2px;color:var(--background-1);display: inline-block;font-size: 11px;text-align: center;padding: 1px 5px;margin: 0px 8px">{{$article_comments}}</span>
-
+                                        
                                         @endif
 
                                     </a></li>
@@ -327,43 +327,43 @@
                     </div>
 
 
-
+                    
                     @can('contacts-read')
                     <a href="{{route('admin.contacts.index')}}" class="col-12 px-0" >
                         <div class="col-12 item-container px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-phone font-2"> </span>
+                                <span class="fal fa-phone font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                طلب التواصل
+                                طلب التواصل 
                             @php
                             $contacts_count = \App\Models\Contact::where('status','PENDING')->count();
                             @endphp
                             @if($contacts_count)
                             <span style="background: #d34339;border-radius: 2px;color:var(--background-1);display: inline-block;font-size: 11px;text-align: center;padding: 1px 5px;margin: 0px 8px">{{$contacts_count}}</span>
-
+                            
                             @endif
-                            </div>
+                            </div> 
                         </div>
                     </a>
                     @endcan
-
-
-
+                   
+                    
+                    
                     @can('settings-update')
                     <a href="{{route('admin.settings.index')}}" class="col-12 px-0" >
                         <div class="col-12 item-container px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-wrench font-2"> </span>
+                                <span class="fal fa-wrench font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                الإعدادات
-                            </div>
+                            </div> 
                         </div>
-                    </a>
+                    </a> 
                     @endcan
 
-
+ 
 
 
                     @can('plugins-read')
@@ -371,28 +371,28 @@
                         <div class="col-12 item px-0 d-flex row " >
                             <div class="col-12 d-flex px-0 item-container">
                                 <div style="width: 50px" class="px-3 text-center">
-                                    <span class="far fa-box-open font-2" style="color:#ff9800"> </span>
+                                    <span class="far fa-box-open font-2" style="color:#ff9800"> </span> 
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
                                     الاضافات
-                                </div>
+                                </div> 
                             </div>
                             <div class="col-12 px-0" >
                                 <ul class="sub-item font-1" style="list-style:none;">
-
+                                    
                                     @can('plugins-read')
                                     <li><a href="{{route('admin.plugins.index')}}" style="font-size: 16px;"><span class="fal fa-box-open px-2" style="width: 28px;font-size: 15px;"></span> كل الاضافات
 
                                         @if(count($plugins))
                                         <span style="background: #d34339;border-radius: 2px;color:var(--background-1);display: inline-block;font-size: 11px;text-align: center;padding: 1px 5px;margin: 0px 8px">{{count($plugins)}}</span>
-
+                                        
                                         @endif
 
 
                                     </a></li>
                                     @endcan
 
-
+                               
                                     @foreach($plugins as $plugin)
                                         @if($plugin->get('type')=="plugin")
                                             @can($plugin->get('route').'-read')
@@ -406,33 +406,33 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     @endcan
 
+                    
+                    
 
-
-
-
+                    
 
                     <a href="#" class="col-12 px-0" onclick="document.getElementById('logout-form').submit();">
                         <div class="col-12 item-container px-0 d-flex " >
                             <div style="width: 50px" class="px-3 text-center">
-                                <span class="fal fa-sign-out-alt font-2"> </span>
+                                <span class="fal fa-sign-out-alt font-2"> </span> 
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
                                تسجيل خروج
-                            </div>
+                            </div> 
                         </div>
                     </a>
                 </div>
             </div>
-
+           
         </div>
         <div class="main-content in-active" style="overflow: hidden;">
             <div class="col-12 px-0 d-flex justify-content-between top-nav" style="height: 55px;background: var(--background-1);position: fixed;width: 100%;width: calc(100% - 260px);z-index: 99;border-bottom: 1px solid var(--border-color);">
                 <div class="col-12 px-0 d-flex justify-content-center align-items-center btn  asideToggle" style="width: 55px;height: 55px;">
                     <span class="fal fa-bars font-4"></span>
-                </div>
+                </div> 
                 <div class="col-12 px-0 d-flex justify-content-end  " style="height: 60px;">
 
 
@@ -455,7 +455,7 @@
                             <div class="col-12 notifications-container" style="height:406px;overflow: auto;">
                                 <x-notifications :notifications="$notifications" />
                             </div>
-                            <div class="col-12 d-flex border-top">
+                            <div class="col-12 d-flex border-top"> 
                                 <a href="{{route('admin.notifications.index')}}" class="d-block py-2 px-3 ">
                                     <div class="col-12 align-items-center">
                                       <span class="fal fa-bells"></span>  عرض كل الإشعارات
@@ -472,25 +472,25 @@
                                 <li><a class="dropdown-item font-1" href="/" target="_blank"><span class="fal fa-desktop font-1"></span> عرض الموقع</a></li>
                                 <li><a class="dropdown-item font-1" href="{{route('admin.profile.index')}}"><span class="fal fa-user font-1"></span> ملفي الشخصي</a></li>
 
-                                <li><a class="dropdown-item font-1" href="{{route('admin.profile.edit')}}"><span class="fal fa-edit font-1"></span> تعديل ملفي الشخصي</a></li>
+                                <li><a class="dropdown-item font-1" href="{{route('admin.profile.edit')}}"><span class="fal fa-edit font-1"></span> تعديل ملفي الشخصي</a></li> 
 
-
+                                
 
 
                                 @can('hub-files-read')
-                                <li><a class="dropdown-item font-1" href="{{route('admin.files.index')}}"><span class="fal fa-file font-1"></span> الملفات</a></li>
+                                <li><a class="dropdown-item font-1" href="{{route('admin.files.index')}}"><span class="fal fa-file font-1"></span> الملفات</a></li> 
                                 @endcan
 
 
                                 @can('traffics-read')
-                                <li><a class="dropdown-item font-1" href="{{route('admin.traffics.index')}}"><span class="fal fa-traffic-light font-1"></span> الترافيك</a></li>
+                                <li><a class="dropdown-item font-1" href="{{route('admin.traffics.index')}}"><span class="fal fa-traffic-light font-1"></span> الترافيك</a></li> 
                                 @endcan
 
                                 @can('error-reports-read')
-                                <li><a class="dropdown-item font-1" href="{{route('admin.traffics.error-reports')}}"><span class="fal fa-bug font-1"></span> تقارير الأخطاء</a></li>
+                                <li><a class="dropdown-item font-1" href="{{route('admin.traffics.error-reports')}}"><span class="fal fa-bug font-1"></span> تقارير الأخطاء</a></li> 
                                 @endcan
-
-
+                                
+ 
 
 
                                 <li><hr style="height: 1px;margin: 10px 0px 5px;"></li>
@@ -500,7 +500,7 @@
                     </div>
 
                     <div class="dropdown" style="width: 55px;height: 55px;background: #2381c6">
-                        <span class="d-inline-block fal fa-user"></span>
+                        <span class="d-inline-block fal fa-user"></span> 
                     </div>
 
                 </div>
@@ -509,7 +509,7 @@
                 <div style="position:fixed;display: flex;align-items: center;justify-content: center;height: 100vh;background: var(--background-1);z-index: 10;margin-top: -15px;" id="loading-image-container">
                     <img src="/images/loading.gif" style="position:fixed;width: 120px;max-width: 80%;margin-top: -60px;" id="loading-image">
                 </div>
-
+                
                 @yield('content')
             </div>
         </div>

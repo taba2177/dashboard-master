@@ -43,7 +43,7 @@ body {
                         @endif
 
                          <div class="nafezly-divider-right" style="    background-image: linear-gradient( 90deg,transparent,rgb(0 0 0/72%));right: auto;left: 10px;opacity: .1;margin: 14px 0;min-height: 2px;"></div>
-
+                        
 
                         <div class="form-group row mb-4 col-12 col-lg-6   px-0 pt-2 ">
                             <div class="col-md-12 px-2 pt-4" style="position: relative;">
@@ -100,7 +100,7 @@ body {
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="col-12 px-4 py-2">
                             <div class="col-12 px-0 mb-2">
                                 مساعدة

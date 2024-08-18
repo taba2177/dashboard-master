@@ -24,7 +24,6 @@ use App\Http\Controllers\Backend\BackendContactReplyController;
 use App\Http\Controllers\Backend\BackendAnnouncementController;
 use App\Http\Controllers\Backend\BackendPermissionController;
 use App\Http\Controllers\Backend\BackendUserPermissionController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\BackendUserRoleController;
 use App\Http\Controllers\Backend\BackendRoleController;
 use App\Http\Controllers\Backend\BackendTagController;
@@ -97,7 +96,7 @@ Route::prefix('admin')->middleware(['auth','ActiveAccount'])->name('admin.')->gr
         Route::get('traffics/logs',[BackendTrafficsController::class,'logs'])->name('traffics.logs');
         Route::get('error-reports',[BackendTrafficsController::class,'error_reports'])->name('traffics.error-reports');
         Route::get('error-reports/{report}',[BackendTrafficsController::class,'error_report'])->name('traffics.error-report');
-
+        
         Route::prefix('settings')->name('settings.')->group(function () {
             Route::get('/',[BackendSettingController::class,'index'])->name('index');
             Route::put('/update',[BackendSettingController::class,'update'])->name('update');

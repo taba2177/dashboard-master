@@ -62,7 +62,7 @@
                             <div class="col-12 notifications-container" style="height:406px;overflow: auto;">
                                 <x-notifications :notifications="$notifications" />
                             </div>
-                            <div class="col-12 d-flex border-top" style="border-color: rgb(46 46 46 / 9%)!important;">
+                            <div class="col-12 d-flex border-top" style="border-color: rgb(46 46 46 / 9%)!important;"> 
                                 <a href="{{route('user.notifications')}}" class="d-block py-2 px-3 ">
                                     <div class="col-12 align-items-center">
                                       <span class="fal fa-bells"></span>  عرض كل الإشعارات
@@ -79,12 +79,12 @@
                                 <li><a class="dropdown-item font-1" href="{{route('user.dashboard')}}" ><span class="fal fa-sliders-h font-1" style="width: 20px;"></span> لوحة التحكم</a></li>
                                 <li><a class="dropdown-item font-1" href="{{route('user.support')}}"><span class="fal fa-comments-alt font-1" style="width: 20px;"></span> الدعم الفني</a></li>
 
-
+                        
 
                                 <li><a class="dropdown-item font-1" href="{{route('user.profile.edit')}}"><span class="fal fa-wrench font-1" style="width: 20px;"></span> الاعدادات</a></li>
 
-                                <li><a class="dropdown-item font-1" href="{{route('user.notifications')}}"><span class="fal fa-bells font-1" style="width: 20px;"></span> الاشعارات</a></li>
-
+                                <li><a class="dropdown-item font-1" href="{{route('user.notifications')}}"><span class="fal fa-bells font-1" style="width: 20px;"></span> الاشعارات</a></li> 
+                           
                                 <li><hr style="height: 1px;margin: 10px 0px 5px;"></li>
                                 <li><a class="dropdown-item font-1"  onclick="document.getElementById('logout-form').submit();" style="cursor:pointer;"><span class="fal fa-sign-out-alt font-1" style="width: 20px;"></span> تسجيل خروج</a></li>
                         </ul>
@@ -128,8 +128,8 @@
             </div>
             @endforeach
             @endif
-
-
+ 
+        
         </div>
         <div class="col-12 px-0 py-2" style="position:absolute;width: 100%;">
             <div class="col-12  p-0">

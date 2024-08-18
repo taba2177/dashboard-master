@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
             \App\Models\User::create([
                 'name'=>"مسؤول",
                 'email'=>env('DEFAULT_EMAIL'),
-                'email_verified_at'=>date("Y-m-d h:i:s"),
+                'email_verified_at'=>date("Y-m-d h:i:s"), 
                 'password'=>bcrypt(env('DEFAULT_PASSWORD'))
             ]);
     }

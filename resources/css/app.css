@@ -6,7 +6,7 @@
 @import "/public/assets/css/plugins.css";
 
 
-/* ! purgecss start ignore */
+/*! purgecss start ignore */
 @import "/public/css/croppie.min.css";
 
 /*main-basic*/
@@ -78,7 +78,7 @@
 body,*{
     direction: rtl;
     text-align: start;
-
+    
 }
 html{
     font-size: 16px;

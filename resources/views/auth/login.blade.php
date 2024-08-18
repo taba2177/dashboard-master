@@ -25,13 +25,13 @@
                 <div class="col-12 p-3 p-lg-4" style="background:#fff;border-radius: 10px;">
                     <form method="POST" action="{{ route('login') }}" class="row m-0">
                         @csrf
-
+                       
                         <div class="col-12 p-0 mb-5 mt-3" style="width: 550px;max-width: 100%;margin: 0px auto;">
                             <h3 class="mb-4 font-4">{{ __('lang.login') }}</h3>
-
+                             
                         </div>
 
-
+                        
 
                         @if(env('GOOGLE_CLIENT_ID')!=null)
                         <div class="col-6 py-2 px-2">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         @endif
-
+                        
 
                         <div class="nafezly-divider-right" style="    background-image: linear-gradient( 90deg,transparent,rgb(0 0 0/72%));right: auto;left: 10px;opacity: .1;margin: 14px 0;min-height: 2px;"></div>
 
@@ -108,11 +108,11 @@
 
                             </div>
                         </div>
+                        
+                        
 
-
-
-
-
+ 
+                        
 
                         <div class="col-12 px-4 py-2">
                             <div class="col-12 px-0 mb-2">

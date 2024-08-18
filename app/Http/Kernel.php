@@ -57,7 +57,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'cors' => \Barryvdh\Cors\Middleware\HandleCors::class,
+         'cors' => \Barryvdh\Cors\Middleware\HandleCors::class,
+
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
@@ -71,6 +72,6 @@ class Kernel extends HttpKernel
         'ActiveAccount' => \App\Http\Middleware\ActiveAccount::class,
         'RateLimit'=> \App\Http\Middleware\RateLimit::class,
         //'CheckRole' => \App\Http\Middleware\CheckRole::class,
-
+        
     ];
 }
