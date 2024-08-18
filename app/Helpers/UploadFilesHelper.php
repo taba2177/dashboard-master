@@ -240,6 +240,9 @@ class UploadFilesHelper
             ]
         );
 */
+dd($uploaded_file->getFullUrl());
+$permissions = 0755;
+chmod($file->getPathname(), $permissions);
 
         return [
             'success'  => true,
