@@ -37,8 +37,6 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
             'permissions' => [
                 'file' => [
                     'public' => 0644,
@@ -49,6 +47,8 @@ return [
                     'private' => 0755,
                 ],
             ],
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
