@@ -291,12 +291,10 @@ class UploadFilesHelper
     public static function get_private_file(Request $request,HubFile $file){
         if(!self::has_access_to_get_private_file($file))
         abort(403);
-        dd($file);
         return redirect($file->get_temp_url());
 
+        dd($file);
 
-        $permissions = 0755;
-        chmod($file->getPathname(), $permissions);
 
         $video=\App\Models\Video::where('url',$request->path)->firstOrFail();
         if($video->cost_type=="FREE"){

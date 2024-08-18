@@ -241,14 +241,16 @@ class MainHelper {
         $explode = explode("/",$file_name);
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
-
+            dd($new_file_name);
+            $permissions = 0755;
+            chmod($file->getPathname(), $permissions);
             return $explode[0] .'/'."conversions".'/'.$new_file_name;
         }
         return $file_name;
     }
     public static function move_media_to_model_by_id($id,$model,$collection="default"){
         // $directory = storage_path('app/uploads');
-     
+
         // $it = new \RecursiveDirectoryIterator($directory);
         // chmod($file->getPathname(), $permissions);
 
