@@ -37,6 +37,7 @@ class UploadFilesHelper
             0,
             true // Mark it as test, since the file isn't from real HTTP POST.
         );
+        dd($tmpFilePath);
         return $uploaded_file;
     }
     public static function base64_to_file($file){
@@ -187,7 +188,7 @@ class UploadFilesHelper
 
         $temp_file = \App\Models\TempFile::create(['name'=>$options['temp_file_selector'],'user_id'=>auth()->check()?auth()->id():null]);
         $uploaded_file = $temp_file->addMedia($file)->toMediaCollection($options['type']);
- 
+
         /*       dd($uploaded_file);
 
 
