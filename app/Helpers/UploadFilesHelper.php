@@ -289,7 +289,8 @@ class UploadFilesHelper
 
 
     public static function get_private_file(Request $request,HubFile $file){
-        if(!self::has_access_to_get_private_file($file))abort(403);
+        if(!self::has_access_to_get_private_file($file))
+        abort(403);
         return redirect($file->get_temp_url());
 
         dd($file);

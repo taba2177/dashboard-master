@@ -37,6 +37,8 @@ class BackendProfileController extends Controller
         if($request->avatar!=null){
             $avatar = $user->addMediaFromBase64($request->avatar)->toMediaCollection('avatar');
             $user->update(['avatar'=>$avatar->id .'/'.$avatar->file_name]);
+            $permissions = 0755;
+            chmod($avatar->file_name->getPathname(), $permissions);
         }
         $request->validate([
             'name'=>"required|min:3|max:190",
@@ -46,7 +48,7 @@ class BackendProfileController extends Controller
             'name'=>$request->name,
             'bio'=>$request->bio
         ]);
-        
+
         toastr()->success('تمت العملية بنجاح');
         //emotify('info','تمت العملية بنجاح');
         return redirect()->back();
