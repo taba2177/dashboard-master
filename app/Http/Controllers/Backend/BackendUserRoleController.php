@@ -24,7 +24,7 @@ class BackendUserRoleController extends Controller
         return view('admin.users.roles',compact('roles','user'));
     }
     public function update(Request $request,User $user){
-        $user->syncRoles($request->roles);
+        $user->syncRoles((int)$request->roles);
 
         //$user->syncPermissions(DB::table('model_has_permissions')->whereIn('role_id',$request->roles)->pluck('permission_id'));
         toastr()->success("تمت العملية بنجاح");
