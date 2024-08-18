@@ -310,8 +310,7 @@ class UploadFilesHelper
                   if(\Auth::check()){
                         $tm = \App\TicketMessage::where('id',$file->type_id)->firstOrFail();
                         if(\Auth::user()->hasRole("ADMIN") || $tm->ticket->user_id==\Auth::id()){
-                            $permissions = 0755;
-                            chmod($file->getPathname(), $permissions);
+
                               return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                                 substr($file->path, 1) .$file->name ,
                                 now()->addHour()
