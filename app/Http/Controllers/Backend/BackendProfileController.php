@@ -58,7 +58,7 @@ class BackendProfileController extends Controller
         // save it to temporary dir first.
         $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
         file_put_contents($tmpFilePath, $fileData);
-
+var_dump($tmpFilePath);
         // this just to help us get file info.
         $tmpFile = new File($tmpFilePath);
 
