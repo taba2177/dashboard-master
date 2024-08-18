@@ -248,7 +248,7 @@ class MainHelper {
     }
     public static function move_media_to_model_by_id($id,$model,$collection="default"){
         // $directory = storage_path('app/uploads');
-        // $permissions = 0755;
+        $permissions = 0755;
 
         // $it = new \RecursiveDirectoryIterator($directory);
         // chmod($file->getPathname(), $permissions);
