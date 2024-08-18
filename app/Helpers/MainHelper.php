@@ -249,7 +249,7 @@ class MainHelper {
     public static function move_media_to_model_by_id($id,$model,$collection="default"){
         $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
         foreach($temp_files as $file){
-            chmod($file, 0755);
+           
             foreach($file->media as $media){
                 $media->move($model,$collection);
             }
