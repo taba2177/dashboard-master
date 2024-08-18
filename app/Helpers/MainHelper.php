@@ -247,9 +247,15 @@ class MainHelper {
         return $file_name;
     }
     public static function move_media_to_model_by_id($id,$model,$collection="default"){
+        // $directory = storage_path('app/uploads');
+        // $permissions = 0755;
+
+        // $it = new \RecursiveDirectoryIterator($directory);
+        // chmod($file->getPathname(), $permissions);
+
         $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
         foreach($temp_files as $file){
-           
+            chmod($file->getPathname(), $permissions);
             foreach($file->media as $media){
                 $media->move($model,$collection);
             }
