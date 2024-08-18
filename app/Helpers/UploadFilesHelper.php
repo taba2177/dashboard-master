@@ -294,7 +294,7 @@ class UploadFilesHelper
 
         $video=\App\Models\Video::where('url',$request->path)->firstOrFail();
         if($video->cost_type=="FREE"){
-            dd($request->path);
+          
         }
         if($file->visibility=="PRIVATE") {
             if(\Auth::check() && (\Auth::user()->hasRole("ADMIN") || $file->user_id == \Auth::user()->id ) )

@@ -24,13 +24,13 @@ class BackendProfileController extends Controller
 
     public function index(Request $request)
     {
-        return view('admin.profile.index'); 
+        return view('admin.profile.index');
     }
     public function edit(Request $request)
     {
-        return view('admin.profile.edit'); 
+        return view('admin.profile.edit');
     }
-    
+
     public function update(Request $request)
     {
         $user= User::where('id',auth()->id())->firstOrFail();
@@ -46,7 +46,7 @@ class BackendProfileController extends Controller
             'name'=>$request->name,
             'bio'=>$request->bio
         ]);
-        toastr()->success('تمت العملية بنجاح');
+        toastr()->success('2222تمت العملية بنجاح');
         //emotify('info','تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -68,7 +68,7 @@ class BackendProfileController extends Controller
             $tmpFile->getMimeType(),
             0,
             true // Mark it as test, since the file isn't from real HTTP POST.
-        ); 
+        );
 
         return $file;
     }
@@ -88,7 +88,7 @@ class BackendProfileController extends Controller
         }else{
             flash()->error('كلمة المرور الحالية التي أدخلتها غير صحيحة','عملية غير ناجحة');
             return redirect()->back();
-        }  
+        }
     }
     public function update_email(Request $request){
         $request->validate([
@@ -101,11 +101,11 @@ class BackendProfileController extends Controller
         toastr()->success('تمت عملية تغيير البريد الالكتروني بنجاح','عملية ناجحة');
         return redirect()->back();
     }
-    
 
 
 
 
 
-    
+
+
 }
