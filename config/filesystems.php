@@ -37,16 +37,6 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'permissions' => [
-                'file' => [
-                    'public' => 0644,
-                    'private' => 0600,
-                ],
-                'dir' => [
-                    'public' => 0755,  // You can change this to 0775 if needed
-                    'private' => 0755,
-                ],
-            ],
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
@@ -77,7 +67,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app'),
+        public_path('storage') => storage_path('media-library'),
     ],
 
 ];
