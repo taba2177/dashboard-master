@@ -46,7 +46,7 @@ class BackendProfileController extends Controller
             'name'=>$request->name,
             'bio'=>$request->bio
         ]);
-        toastr()->success('2222تمت العملية بنجاح');
+        toastr()->success('تمت العملية بنجاح');
         //emotify('info','تمت العملية بنجاح');
         return redirect()->back();
     }

@@ -187,7 +187,8 @@ class UploadFilesHelper
 
         $temp_file = \App\Models\TempFile::create(['name'=>$options['temp_file_selector'],'user_id'=>auth()->check()?auth()->id():null]);
         $uploaded_file = $temp_file->addMedia($file)->toMediaCollection($options['type']);
- /*       dd($uploaded_file);
+        dd($uploaded_file);
+        /*       dd($uploaded_file);
 
 
         if($options['validation']=="image" && $options['optimize']==true ){
@@ -294,7 +295,7 @@ class UploadFilesHelper
 
         $video=\App\Models\Video::where('url',$request->path)->firstOrFail();
         if($video->cost_type=="FREE"){
-          
+
         }
         if($file->visibility=="PRIVATE") {
             if(\Auth::check() && (\Auth::user()->hasRole("ADMIN") || $file->user_id == \Auth::user()->id ) )
