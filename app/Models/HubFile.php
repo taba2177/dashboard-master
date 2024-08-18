@@ -17,7 +17,7 @@ class HubFile extends Model
         return $this->belongsTo(\App\Models\User::class);
     }
     public function get_url(){
-                if($this->visibility=="PRIVATE")return $this->get_temp_url();
+                if($this->visibility=="PUBLIC")return $this->get_temp_url();
         return \Storage::disk($this->bucket_name)->url(strtolower($this->visibility).$this->path.$this->name);
     }
     public function get_path(){
@@ -44,5 +44,5 @@ class HubFile extends Model
     public function has_access_to_get_private_file(){
         return 1;
     }
-    
+
 }
