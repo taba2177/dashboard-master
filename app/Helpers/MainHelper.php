@@ -241,13 +241,14 @@ class MainHelper {
         $explode = explode("/",$file_name);
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
-            dd(  $new_extension);
+
             return $explode[0] .'/'."conversions".'/'.$new_file_name;
         }
         return $file_name;
     }
     public static function move_media_to_model_by_id($id,$model,$collection="default"){
         $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
+        dd($temp_files);
         foreach($temp_files as $file){
             foreach($file->media as $media){
                 $media->move($model,$collection);
