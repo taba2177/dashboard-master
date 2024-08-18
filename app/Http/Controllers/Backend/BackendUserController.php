@@ -75,7 +75,7 @@ class BackendUserController extends Controller
                 'roles.*'=>"required|exists:roles,id",
             ]);
 
-            $user->syncRoles((int)$request->roles);
+            $user->syncRoles(intval($request->roles));
         }
 
         if($request->hasFile('avatar')){
@@ -142,7 +142,7 @@ class BackendUserController extends Controller
                 'roles'=>"required|array",
                 'roles.*'=>"required|exists:roles,id",
             ]);
-            $user->syncRoles((int)$request->roles);
+            $user->syncRoles(intval($request->roles));
         }
 
         if($request->password!=null){
