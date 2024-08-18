@@ -39,16 +39,18 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-            'directory_visibility' => 'public',
+            'visibility' => 'custum',
+            'directory_visibility' => 'custum',
             'permissions' => [
                 'file' => [
                     'public' => 0644,
                     'private' => 0600,
+                    'custum' => 0660,
                 ],
                 'dir' => [
                     'public' => 0755,  // You can change this to 0775 if needed
                     'private' => 0700,
+                    'custum' => 0777,
                 ],
             ],
         ],
