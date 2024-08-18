@@ -242,7 +242,6 @@ class MainHelper {
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
             dd($explode[0] .'/'."conversions".'/'.$new_file_name);
-            // var_dump($new_file_name);
             return $explode[0] .'/'."conversions".'/'.$new_file_name;
         }
         return $file_name;
