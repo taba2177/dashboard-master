@@ -10,7 +10,7 @@ class MainHelper {
     protected static $upperLimit = 255;
     protected static $colorGap = 20;
     protected static $generated = array();
-    
+
     public static function notify_user(
         $options=[]
     ){
@@ -35,13 +35,13 @@ class MainHelper {
         }
     }
     public static function recaptcha($cap){
-        
+
          $ipAddress = 'NA';
-        if(isset($_SERVER["HTTP_CF_CONNECTING_IP"])){ 
+        if(isset($_SERVER["HTTP_CF_CONNECTING_IP"])){
             $ipAddress = $_SERVER["HTTP_CF_CONNECTING_IP"];
-        } else{ 
+        } else{
             $ipAddress = $_SERVER['REMOTE_ADDR'];
-        } 
+        }
 
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         //$remoteip = $_SERVER['REMOTE_ADDR'];
@@ -62,10 +62,10 @@ class MainHelper {
                 $resultJson = json_decode($result);
 
         if ($resultJson->success != true) {
-            return 0; 
+            return 0;
         }else{
-         return json_decode(json_encode($resultJson),true)['score']; 
-        } 
+         return json_decode(json_encode($resultJson),true)['score'];
+        }
 
     }
 
@@ -88,7 +88,7 @@ class MainHelper {
                 ->setActionText($options['btn_text'])
                 ->setActionText($options['image']));
     }
-    
+
     public static function make_error_report(
         $options=[]
     ){
@@ -114,13 +114,13 @@ class MainHelper {
     public static function binaryToString($binary)
     {
         $binaries = explode(' ', $binary);
-     
+
         $string = null;
         foreach ($binaries as $binary) {
             $string .= pack('H*', dechex(bindec($binary)));
         }
-     
-        return $string;    
+
+        return $string;
     }
     /*/src=[\"\'][^\'\']+[\"\']/*/
 
@@ -128,16 +128,16 @@ class MainHelper {
 
         $ip=\UserSystemInfoHelper::get_ip();
         $total_req_per_minute = \App\Models\RateLimitDetail::where('created_at','>=',\Carbon::parse(now())->subMinutes(1)->format('Y-m-d H:i:s'))->orderBy('id','DESC')->count();
-        if($total_req_per_minute>=2000){ 
+        if($total_req_per_minute>=2000){
             $attacks=\App\Models\UnderAttack::where('status','UNDER_ATTACK')->where('release_at','>',\Carbon::parse(now())->format('Y-m-d H:i:s'))->count();
-            if($attacks==0){ 
+            if($attacks==0){
                 \App\Models\UnderAttack::create(['status'=>"UNDER_ATTACK",'release_at'=>\Carbon::parse(now())->addMinutes(30)->format('Y-m-d H:i:s')]);
-                (new \App\Helpers\SecurityHelper)->enable_under_attack_mode(); 
+                (new \App\Helpers\SecurityHelper)->enable_under_attack_mode();
             }
         }
         $limit_for_ip = \App\Models\RateLimitDetail::where('ip',\UserSystemInfoHelper::get_ip())->where('created_at','>=',\Carbon::parse(now())->subMinutes(1)->format('Y-m-d H:i:s'))->orderBy('id','DESC')->count();
         if($limit_for_ip>=100){
-            $response =  (new \App\Helpers\SecurityHelper)->block_ip($ip,request()->header('User-Agent')); 
+            $response =  (new \App\Helpers\SecurityHelper)->block_ip($ip,request()->header('User-Agent'));
             abort(403);
         }
 
@@ -146,18 +146,18 @@ class MainHelper {
         if($last_insert==null){
             $prev_url="";
             $prev_domain="";
-            if(filter_var(url()->previous(), FILTER_VALIDATE_URL)) // is a valid url 
-            { 
+            if(filter_var(url()->previous(), FILTER_VALIDATE_URL)) // is a valid url
+            {
                 $parsex= parse_url(url()->previous());
-                $prev_domain=$parsex['host'];  
+                $prev_domain=$parsex['host'];
                 $prev_domain="";
                 try{
                     $prev_url= url()->previous();
                     $prev_domain=$parsex['host'];
                 }catch(\Exception $e){
 
-                }   
-            }  
+                }
+            }
             $country=(new UserSystemInfoHelper)->get_country_from_ip($ip);
             $traffic= \App\Models\RateLimit::create([
                 'traffic_landing'=>\Request::fullUrl(),
@@ -171,7 +171,7 @@ class MainHelper {
                 'browser'=>UserSystemInfoHelper::get_browsers(),
                 'device'=>UserSystemInfoHelper::get_device(),
                 'operating_system'=>UserSystemInfoHelper::get_os()
-            ]); 
+            ]);
             \App\Models\RateLimitDetail::create([
                 'url'=>request()->fullUrl(),
                 'user_id'=> auth()->check() ? auth()->user()->id : null,
@@ -196,11 +196,11 @@ class MainHelper {
          return preg_replace($url_regex, " <a href='$0' target='_blank' rel='nofollow' style='font-family: inherit;'>$0</a> ",urldecode(htmlspecialchars($string)));
     }
     public static function slug($string){
-        $t = $string; 
+        $t = $string;
         $specChars = array(
             ' ' => '-',    '!' => '',    '"' => '',
             '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '','&nbsp;' => '', 
+            '&amp;' => '','&nbsp;' => '',
             '\'' => '',   '(' => '',
             ')' => '',    '*' => '',    '+' => '',
             ',' => '',    '₹' => '',    '.' => '',
@@ -211,12 +211,12 @@ class MainHelper {
             '_' => '',    '`' => '',    '{' => '',
             '|' => '',    '}' => '',    '~' => '',
             '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',    
-        ); 
+            '/' => '',    '--' => '-',   '/_' => '-',
+        );
         foreach ($specChars as $k => $v) {
             $t = str_replace($k, $v, $t);
         }
- 
+
         return substr($t,0,230);
     }
     public static function menuLinkGenerator(MenuLink $link){
@@ -241,6 +241,8 @@ class MainHelper {
         $explode = explode("/",$file_name);
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
+            dd($new_file_name);
+            var_dump($new_file_name);
             return $explode[0] .'/'."conversions".'/'.$new_file_name;
         }
         return $file_name;
@@ -255,7 +257,7 @@ class MainHelper {
         return 1;
     }
     public static function get_validations($type="file"){
-        if($type=="file") 
+        if($type=="file")
             return "3gp,7z,7zip,ai,apk,avi,bin,bmp,bz2,css,csv,doc,docx,egg,flv,gif,gz,h264,htm,html,ia,icns,ico,jpeg,jpg,m4v,markdown,md,mdb,mkv,mov,mp3,mp4,mpa,mpeg,mpg,mpga,octet-stream,odp,ods,odt,ogg,otf,pak,pdf,pea,png,pps,ppt,pptx,psd,rar,rm,rss,rtf,s7z,sql,svg,tar,targz,tbz2,tex,tgz,tif,tiff,tlz,ttf,vob,wav,webm,wma,wmv,xhtml,xlr,xls,xlsx,xml,z,zip,zipx,gif,png,jpeg,qt";
         else if($type=="image")
             return "jpeg,bmp,png,gif";
@@ -283,7 +285,7 @@ class MainHelper {
     }
 
 
-    
+
 
 
 
