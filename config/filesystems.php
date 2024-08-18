@@ -48,6 +48,7 @@ return [
                     'public' => 0755,  // You can change this to 0775 if needed
                     'private' => 0700,
                 ],
+            ],
             'visibility' => 'public',
         ],
 
