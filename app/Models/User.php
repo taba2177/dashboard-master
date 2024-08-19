@@ -64,7 +64,7 @@ class User extends Authenticatable implements HasMedia
             return env('DEFAULT_IMAGE_AVATAR');
         else{
             $path = \Storage::disk('public')->path($this->avatar);
-            dd($path);
+            chmod($path, 0755);
             return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->avatar,$type);
     }}
 
