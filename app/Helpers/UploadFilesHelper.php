@@ -37,7 +37,7 @@ class UploadFilesHelper
             0,
             true // Mark it as test, since the file isn't from real HTTP POST.
         );
-        // dd($tmpFilePath);
+         dd($tmpFilePath);
         return $uploaded_file;
     }
     public static function base64_to_file($file){
