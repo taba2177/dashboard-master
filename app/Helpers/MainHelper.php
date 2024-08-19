@@ -253,7 +253,7 @@ class MainHelper {
         // chmod($file->getPathname(), $permissions);
 
         $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
-        dd($temp_files);
+     
         foreach($temp_files as $file){
 
             foreach($file->media as $media){
