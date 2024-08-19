@@ -238,7 +238,7 @@ class MainHelper {
     public static function get_conversion($file_name,$conversion="original",$new_extension="webp"){
         if($new_extension=="main" || $conversion ==null)
             $new_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-
+            
         $explode = explode("/",$file_name);
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
