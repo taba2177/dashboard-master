@@ -238,10 +238,11 @@ class MainHelper {
     public static function get_conversion($file_name,$conversion="original",$new_extension="webp"){
         if($new_extension=="main" || $conversion ==null)
             $new_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-        // dd($file_name);
+
         $explode = explode("/",$file_name);
         if(isset($explode[0]) && isset($explode[1]) && $conversion!=null){
             $new_file_name =pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
+            chmod(env("STORAGE_URL").'/'.$explode[0] .'/'."conversions".'/'.$new_file_name, 0755);
             return $explode[0] .'/'."conversions".'/'.$new_file_name;
         }
         return $file_name;
@@ -253,7 +254,7 @@ class MainHelper {
         // chmod($file->getPathname(), $permissions);
 
         $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
-     
+
         foreach($temp_files as $file){
 
             foreach($file->media as $media){
