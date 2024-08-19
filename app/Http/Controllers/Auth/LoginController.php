@@ -86,7 +86,7 @@ class LoginController extends Controller
     public function redirect_google()
     {
         return Socialite::driver('google')->redirect();
-    } 
+    }
 
     public function callback_facebook()
     {
@@ -100,7 +100,7 @@ class LoginController extends Controller
             $user_mail=str_replace(['.','+'],'',$user_mail);
             $user_mail=str_replace(['@gmailcom','@googlemailcom'],['@gmail.com','@gmail.com'],$user_mail);
         }
-            
+
         if($user_mail==null)abort(404);
         $is_registered=User::where('email',$user_mail)->first();
 
@@ -118,7 +118,7 @@ class LoginController extends Controller
             ]);
             $created_user->assignRole("user");
             if($user->avatar_original!=null){
-                $avatar = $created_user->addMediaFromUrl($user->avatar_original)->toMediaCollection('avatar');
+                $avatar = $created_user->addMediaFromUrl($user->avatar_original)->toMediaCollection('avatar','local');
                 $created_user->update(['avatar'=>$avatar->id .'/'.$avatar->file_name]);
             }
             auth()->loginUsingId($created_user->id, true);
@@ -129,13 +129,13 @@ class LoginController extends Controller
         }
     }
     public function callback_google(){
-        
+
         $user = Socialite::driver('google')->stateless()->user();
         if(str_contains($user->user['email'], "@gmail.com") || str_contains($user->user['email'], "@googlemail.com")){
             $user->user['email']=str_replace(['.','+'],'',$user->user['email']);
             $user->user['email']=str_replace(['@gmailcom','@googlemailcom'],['@gmail.com','@gmail.com'],$user->user['email']);
         }
-            
+
         if($user->user['email']==null)abort(404);
         $is_registered=User::where('email',$user->user['email'])->first();
 
@@ -153,7 +153,7 @@ class LoginController extends Controller
             ]);
             $created_user->assignRole("user");
             if($user->user['picture']!=null){
-                $avatar = $created_user->addMediaFromUrl(strtok($user->user['picture'],'='))->toMediaCollection('avatar');
+                $avatar = $created_user->addMediaFromUrl(strtok($user->user['picture'],'='))->toMediaCollection('avatar','local');
                 $created_user->update(['avatar'=>$avatar->id .'/'.$avatar->file_name]);
             }
             auth()->loginUsingId($created_user->id, true);

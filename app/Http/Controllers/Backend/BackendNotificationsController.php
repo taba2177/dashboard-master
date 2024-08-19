@@ -23,7 +23,7 @@ class BackendNotificationsController extends Controller
             $user=\App\Models\User::where('id',$request->user_id)->firstOrFail();
         if(auth()->user()->id==$user->id)
             $user->unreadNotifications->markAsRead();
-        $notifications = $user->notifications()->simplePaginate(); 
+        $notifications = $user->notifications()->simplePaginate();
         return view('admin.notifications.index',compact('notifications'));
     }
     public function see(Request $request){
@@ -34,7 +34,7 @@ class BackendNotificationsController extends Controller
 
     public function ajax(Request $request){
         if(!auth()->user()->can('notifications-read'))abort(403);
-        $notifications = \Auth::user()->notifications()->limit(15)->get(); 
+        $notifications = \Auth::user()->notifications()->limit(15)->get();
         $not_response  = array(
             'response'                   => (new NotificationComponent($notifications))->render(1),
             'count_unseen_notifications' => intval($notifications->whereNull('read_at')->count()),
@@ -48,8 +48,8 @@ class BackendNotificationsController extends Controller
         ];
 
         if ($data['notifications']['counter_session'] < $not_response['count_unseen_notifications'])
-            $data['alert'] = true; 
-  
+            $data['alert'] = true;
+
             session(['seen_notifications' => $not_response['count_unseen_notifications']]);
         return $data;
     }
@@ -69,8 +69,8 @@ class BackendNotificationsController extends Controller
         ]);
         if($request->hasFile('files'))
         foreach($request['files'] as $file){
-            $contact->addMedia($file)->toMediaCollection('file');
-        } 
+            $contact->addMedia($file)->toMediaCollection('file','local');
+        }
 
         $user = \App\Models\User::where('id',$request->user_id)->firstOrFail();
         (new \MainHelper)->notify_user([

@@ -34,12 +34,12 @@ class FrontendProfileController extends Controller
         ]);
         if($request->files !=null){
             foreach($request->files as $file){
-                $ticket->addMedia($file)->toMediaCollection();
+                $ticket->addMedia($file)->toMediaCollection('local');
             }
         }
         return redirect()->route('user.ticket',$ticket);
     }
-    
+
     public function ticket(Request $request,Contact $ticket)
     {
         return view('front.user.ticket',compact('ticket'));
@@ -60,7 +60,7 @@ class FrontendProfileController extends Controller
             'message'=>"تم ارسال رسالتك بنجاح",
             'alert-type'=>"warning"
         ]);
-        
+
     }
     public function notifications(Request $request)
     {

@@ -69,7 +69,7 @@ class BackendCategoryController extends Controller
             "meta_description"=>$request->meta_description,
         ]);
         if($request->hasFile('image')){
-            $image = $category->addMedia($request->image)->toMediaCollection('image');
+            $image = $category->addMedia($request->image)->toMediaCollection('image','local');
             $category->update(['image'=>$image->id.'/'.$image->file_name]);
         }
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$category,"description");
@@ -94,7 +94,7 @@ class BackendCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
-    {   
+    {
         return view('admin.categories.edit',compact('category'));
     }
 
@@ -124,7 +124,7 @@ class BackendCategoryController extends Controller
             "meta_description"=>$request->meta_description,
         ]);
         if($request->hasFile('image')){
-            $image = $category->addMedia($request->image)->toMediaCollection('image');
+            $image = $category->addMedia($request->image)->toMediaCollection('image','local');
             $category->update(['image'=>$image->id.'/'.$image->file_name]);
         }
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$category,"description");

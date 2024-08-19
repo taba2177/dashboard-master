@@ -64,7 +64,7 @@ class BackendAnnouncementController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            $image = $announcement->addMedia($request->image)->toMediaCollection('image');
+            $image = $announcement->addMedia($request->image)->toMediaCollection('image','local');
             $announcement->update(['image'=>$image->id.'/'.$image->file_name]);
         }
 
@@ -80,7 +80,7 @@ class BackendAnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        
+
     }
 
     /**
@@ -113,7 +113,7 @@ class BackendAnnouncementController extends Controller
             'open_url_in'=>$request->open_url_in=="NEW_WINDOW"?"NEW_WINDOW":"CURRENT_WINDOW",
         ]);
         if($request->hasFile('image')){
-            $image = $announcement->addMedia($request->image)->toMediaCollection('image');
+            $image = $announcement->addMedia($request->image)->toMediaCollection('image','local');
             $announcement->update(['image'=>$image->id.'/'.$image->file_name]);
         }
         toastr()->success(__('utils/toastr.update_success_message'));

@@ -56,8 +56,8 @@ class BackendContactReplyController extends Controller
 
         if($request->hasFile('files'))
         foreach($request['files'] as $file){
-            $contact_reply->addMedia($file)->toMediaCollection('files');
-        } 
+            $contact_reply->addMedia($file)->toMediaCollection('files','local');
+        }
 
         toastr()->success(__('utils/toastr.process_success_message'));
         return redirect()->back();

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class BackendArticleController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('can:articles-create', ['only' => ['create','store']]);
@@ -75,7 +75,7 @@ class BackendArticleController extends Controller
         $article->tags()->sync($request->tag_id);
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$article,"description");
         if($request->hasFile('main_image')){
-            $main_image = $article->addMedia($request->main_image)->toMediaCollection('image');
+            $main_image = $article->addMedia($request->main_image)->toMediaCollection('image','local');
             $article->update(['main_image'=>$main_image->id.'/'.$main_image->file_name]);
         }
         toastr()->success(__('utils/toastr.article_store_success_message'), __('utils/toastr.successful_process_message'));
@@ -140,7 +140,7 @@ class BackendArticleController extends Controller
         $article->tags()->sync($request->tag_id);
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$article,"description");
         if($request->hasFile('main_image')){
-            $main_image = $article->addMedia($request->main_image)->toMediaCollection('image');
+            $main_image = $article->addMedia($request->main_image)->toMediaCollection('image','local');
             $article->update(['main_image'=>$main_image->id.'/'.$main_image->file_name]);
         }
         toastr()->success(__('utils/toastr.article_update_success_message'), __('utils/toastr.successful_process_message'));

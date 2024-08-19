@@ -71,7 +71,7 @@ class BackendPageController extends Controller
         ]);
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$page,"description");
         if($request->hasFile('image')){
-            $image = $page->addMedia($request->image)->toMediaCollection('image');
+            $image = $page->addMedia($request->image)->toMediaCollection('image','local');
             $page->update(['image'=>$image->id.'/'.$image->file_name]);
         }
 
@@ -80,14 +80,14 @@ class BackendPageController extends Controller
                 'source'=>$request->image,
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/pages/',
-                'type'=>'PAGE', 
+                'type'=>'PAGE',
                 'user_id'=>auth()->user()->id,
                 'resize'=>[500,1000],
                 'small_path'=>'small/',
                 'visibility'=>'PUBLIC',
                 'file_system_type'=>env('FILESYSTEM_DRIVER'),
                 'optimize'=>true
-            ]); 
+            ]);
             $page->update(['image'=>$file['filename']]);
         }*/
         toastr()->success('تم العملية بنجاح','عملية ناجحة');
@@ -148,7 +148,7 @@ class BackendPageController extends Controller
         ]);
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector,$page,"description");
         if($request->hasFile('image')){
-            $image = $page->addMedia($request->image)->toMediaCollection('image');
+            $image = $page->addMedia($request->image)->toMediaCollection('image','local');
             $page->update(['image'=>$image->id.'/'.$image->file_name]);
         }
         /*if($request->hasFile('image')){
@@ -156,14 +156,14 @@ class BackendPageController extends Controller
                 'source'=>$request->image,
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/pages/',
-                'type'=>'PAGE', 
+                'type'=>'PAGE',
                 'user_id'=>auth()->user()->id,
                 'resize'=>[500,1000],
                 'small_path'=>'small/',
                 'visibility'=>'PUBLIC',
                 'file_system_type'=>env('FILESYSTEM_DRIVER'),
                 'optimize'=>true
-            ]); 
+            ]);
             $page->update(['image'=>$file['filename']]);
         }*/
         toastr()->success('تم العملية بنجاح','عملية ناجحة');

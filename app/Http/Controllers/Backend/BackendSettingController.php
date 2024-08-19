@@ -22,8 +22,8 @@ class BackendSettingController extends Controller
 
     public function update(Request $request)
     {
-      
-        
+
+
         cache()->forget('settings');
 
         foreach($request->settings as $key => $value ){
@@ -35,17 +35,17 @@ class BackendSettingController extends Controller
         }
         if($request->hasFile('settings.website_logo')){
             $website_logo_setting= \App\Models\Setting::where('key','website_logo')->first();
-            $image = $website_logo_setting->addMedia($request['settings']['website_logo'])->toMediaCollection('website_logo');
+            $image = $website_logo_setting->addMedia($request['settings']['website_logo'])->toMediaCollection('website_logo','local');
             $website_logo_setting->update(['value'=>$image->id.'/'.$image->file_name]);
         }
         if($request->hasFile('settings.website_wide_logo')){
             $website_wide_logo_setting= \App\Models\Setting::where('key','website_wide_logo')->first();
-            $image = $website_wide_logo_setting->addMedia($request['settings']['website_wide_logo'])->toMediaCollection('website_wide_logo');
+            $image = $website_wide_logo_setting->addMedia($request['settings']['website_wide_logo'])->toMediaCollection('website_wide_logo','local');
             $website_wide_logo_setting->update(['value'=>$image->id.'/'.$image->file_name]);
         }
         if($request->hasFile('settings.website_icon')){
             $website_icon_setting= \App\Models\Setting::where('key','website_icon')->first();
-            $image = $website_icon_setting->addMedia($request['settings']['website_icon'])->toMediaCollection('website_icon');
+            $image = $website_icon_setting->addMedia($request['settings']['website_icon'])->toMediaCollection('website_icon','local');
             $website_icon_setting->update(['value'=>$image->id.'/'.$image->file_name]);
             /*dd(base64_encode( \File::get($request['settings']['website_icon'])  ));
             \App\Models\Setting::where('key','website_icon_base64')->update(['value'=>base64_encode($request['settings']['website_icon'])]);*/
@@ -53,7 +53,7 @@ class BackendSettingController extends Controller
         }
         if($request->hasFile('settings.website_cover')){
             $website_cover_setting= \App\Models\Setting::where('key','website_cover')->first();
-            $image = $website_cover_setting->addMedia($request['settings']['website_cover'])->toMediaCollection('website_cover');
+            $image = $website_cover_setting->addMedia($request['settings']['website_cover'])->toMediaCollection('website_cover','local');
             $website_cover_setting->update(['value'=>$image->id.'/'.$image->file_name]);
         }
 
@@ -65,7 +65,7 @@ class BackendSettingController extends Controller
                 'source'=>$request['settings']['website_logo'],
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
+                'type'=>'IMAGE',
                 'user_id'=>\Auth::user()->id,
                 'small_path'=>'small/',
                 'visibility'=>'PUBLIC',
@@ -79,7 +79,7 @@ class BackendSettingController extends Controller
                 'source'=>$request['settings']['website_wide_logo'],
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
+                'type'=>'IMAGE',
                 'user_id'=>\Auth::user()->id,
                 'small_path'=>'small/',
                 'visibility'=>'PUBLIC',
@@ -93,7 +93,7 @@ class BackendSettingController extends Controller
                 'source'=>$request['settings']['website_icon'],
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
+                'type'=>'IMAGE',
                 'user_id'=>\Auth::user()->id,
                 'small_path'=>'small/',
                 'visibility'=>'PUBLIC',
@@ -107,7 +107,7 @@ class BackendSettingController extends Controller
                 'source'=>$request['settings']['website_cover'],
                 'validation'=>"image",
                 'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
+                'type'=>'IMAGE',
                 'user_id'=>\Auth::user()->id,
                 'resize'=>[500,1000],
                 'small_path'=>'small/',

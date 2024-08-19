@@ -79,7 +79,7 @@ class BackendUserController extends Controller
         }
 
         if($request->hasFile('avatar')){
-            $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar');
+            $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar','local');
             $user->update(['avatar'=>$avatar->id.'/'.$avatar->file_name]);
         }
 
@@ -152,7 +152,7 @@ class BackendUserController extends Controller
             ]);
         }
         if($request->hasFile('avatar')){
-            $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar');
+            $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar','local');
             $user->update(['avatar'=>$avatar->id.'/'.$avatar->file_name]);
         }
 
