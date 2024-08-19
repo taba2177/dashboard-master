@@ -44,5 +44,5 @@ class HubFile extends Model
     public function has_access_to_get_private_file(){
         return 1;
     }
-
+    
 }

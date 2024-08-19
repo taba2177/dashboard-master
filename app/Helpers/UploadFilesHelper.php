@@ -23,7 +23,7 @@ class UploadFilesHelper
     public static function __callStatic($name,$args){
 
     }
-
+    
     public static function url_to_uploaded_file($file,$filename=null){
         $fileData = $file;
         $name= $filename==null?Str::uuid()->toString():$filename;
@@ -36,8 +36,7 @@ class UploadFilesHelper
             $tmpFile->getMimeType(),
             0,
             true // Mark it as test, since the file isn't from real HTTP POST.
-        );
-       //  dd($tmpFilePath);
+        ); 
         return $uploaded_file;
     }
     public static function base64_to_file($file){
@@ -57,7 +56,7 @@ class UploadFilesHelper
             $tmpFile->getMimeType(),
             0,
             true // Mark it as test, since the file isn't from real HTTP POST.
-        );
+        ); 
 
         return $file;
     }
@@ -88,9 +87,9 @@ class UploadFilesHelper
         }
 
         return $bytes;
-    }
+    } 
     public static function get_validations($type="file"){
-        if($type=="file")
+        if($type=="file") 
             return "3gp,7z,7zip,ai,apk,avi,bin,bmp,bz2,css,csv,doc,docx,egg,flv,gif,gz,h264,htm,html,ia,icns,ico,jpeg,jpg,m4v,markdown,md,mdb,mkv,mov,mp3,mp4,mpa,mpeg,mpg,mpga,octet-stream,odp,ods,odt,ogg,otf,pak,pdf,pea,png,pps,ppt,pptx,psd,rar,rm,rss,rtf,s7z,sql,svg,tar,targz,tbz2,tex,tgz,tif,tiff,tlz,ttf,vob,wav,webm,wma,wmv,xhtml,xlr,xls,xlsx,xml,z,zip,zipx,gif,png,jpeg,qt,m4a";
         else if($type=="image")
             return "jpeg,bmp,png,gif,ico";
@@ -100,7 +99,7 @@ class UploadFilesHelper
     public static function store_file_has_errors($file){
         $filename='';
         return [
-            'success' => false,
+            'success' => false, 
             'filename' => $file,
             "hasWarnings"=>"yes",
             "isSuccess"=>false,
@@ -126,11 +125,11 @@ class UploadFilesHelper
         ];
     }
     public static function generate_unique_filename($file,$options){
-        $t =pathinfo($file->getClientOriginalName(),PATHINFO_FILENAME);
+        $t =pathinfo($file->getClientOriginalName(),PATHINFO_FILENAME); 
         $specChars = array(
             ' ' => '-',    '!' => '',    '"' => '',
             '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '','&nbsp;' => '',
+            '&amp;' => '','&nbsp;' => '', 
             '\'' => '',   '(' => '',
             ')' => '',    '*' => '',    '+' => '',
             ',' => '',    '₹' => '',    '.' => '',
@@ -141,8 +140,8 @@ class UploadFilesHelper
             '_' => '',    '`' => '',    '{' => '',
             '|' => '',    '}' => '',    '~' => '',
             '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',
-        );
+            '/' => '',    '--' => '-',   '/_' => '-',    
+        ); 
         foreach ($specChars as $k => $v) {
             $t = str_replace($k, $v, $t);
         }
@@ -151,7 +150,7 @@ class UploadFilesHelper
         $filename = pathinfo($original_file_name,PATHINFO_FILENAME) . '-' . substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6) .'.'. $extension ;
         return $filename;
     }
-    public static function store_file($options){
+    public static function store_file($options){   
         $options = array_merge([
             //'source'=>"",
             'validation'=>"file",
@@ -188,9 +187,8 @@ class UploadFilesHelper
 
         $temp_file = \App\Models\TempFile::create(['name'=>$options['temp_file_selector'],'user_id'=>auth()->check()?auth()->id():null]);
         $uploaded_file = $temp_file->addMedia($file)->toMediaCollection($options['type']);
-
-    /*    dd($uploaded_file);
-
+ /*       dd($uploaded_file);
+ 
 
         if($options['validation']=="image" && $options['optimize']==true ){
 
@@ -219,8 +217,8 @@ class UploadFilesHelper
             try{ \Storage::disk($options["file_system_type"])->put(strtolower($options['visibility']) .$path_small .$filename, $image_sm , $filename);}catch(\Exception $e){}
             try{\Storage::disk($options["file_system_type"])->put(strtolower($options['visibility']) . $path .$filename, $image_lg); }catch(\Exception $e){}
 
-        }else{
-
+        }else{ 
+           
             try{\Storage::disk($options["file_system_type"])->putFileAs(strtolower($options['visibility']) . $path  , $file , $filename);}catch(\Exception $e){}
         }*/
 
@@ -238,12 +236,11 @@ class UploadFilesHelper
                 'bucket_name'   => $options["file_system_type"],
                 'used_at'       => $options['used_at'],
             ]
-        );
+        );  
 */
 
-
         return [
-            'success'  => true,
+            'success'  => true, 
             'filename' => $uploaded_file->file_name,
             'link'     => $uploaded_file->getFullUrl(),
             'old_size' => $uploaded_file->size,
@@ -274,7 +271,7 @@ class UploadFilesHelper
     public static function remove_hub_file($name){
         $get_file = \App\Models\HubFile::where('name', $name)->first();
         if (null != $get_file && ( ($get_file['user_id'] == \Auth::user()->id ) ) ) {
-            $get_file->delete();
+            $get_file->delete(); 
             return ['success' => true, 'filename' => $name];
         }
         return ['success' => false, 'filename' => $name];
@@ -290,47 +287,43 @@ class UploadFilesHelper
 
 
     public static function get_private_file(Request $request,HubFile $file){
-        if(!self::has_access_to_get_private_file($file))
-        abort(403);
+        if(!self::has_access_to_get_private_file($file))abort(403);
         return redirect($file->get_temp_url());
 
         dd($file);
 
-
         $video=\App\Models\Video::where('url',$request->path)->firstOrFail();
         if($video->cost_type=="FREE"){
-
+            
         }
         if($file->visibility=="PRIVATE") {
             if(\Auth::check() && (\Auth::user()->hasRole("ADMIN") || $file->user_id == \Auth::user()->id ) )
-            {
-                // chmod(env("STORAGE_URL").'/'.$explode[0] .'/'."conversions".'/'.$new_file_name, 0755);
-                dd($file->path);
+            {  
                 return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                     substr($file->path, 1) .$file->name ,
                     now()->addHour()
-                ));
+                ));  
             }
             else if($file->type=="ticket_message"){
                   if(\Auth::check()){
-                        $tm = \App\TicketMessage::where('id',$file->type_id)->firstOrFail();
+                        $tm = \App\TicketMessage::where('id',$file->type_id)->firstOrFail(); 
                         if(\Auth::user()->hasRole("ADMIN") || $tm->ticket->user_id==\Auth::id()){
                               return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                                 substr($file->path, 1) .$file->name ,
                                 now()->addHour()
-                            ));
+                            )); 
                         }
                   }
             }
             abort(403);
-
+           
         }else if($file->visibility=="PUBLIC"){
-
+            
         }else{
             abort(403);
         }
 
-    }
+    } 
     public static function has_access_to_get_private_file(HubFile $file){
         return 1;
     }

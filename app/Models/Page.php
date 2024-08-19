@@ -28,8 +28,8 @@ class Page extends Model implements HasMedia
     public function image($type="original"){
         if($this->image==null)
             return env('DEFAULT_IMAGE');
-        else{
-            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->image,$type);}
+        else
+            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->image,$type);
     }
 
     public function registerMediaConversions(Media $media = null): void

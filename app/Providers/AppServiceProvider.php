@@ -28,14 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        umask(0022);
         if($this->app->environment('production')) {
             URL::forceScheme('https');
         }
-
+        
         \App\Models\ContactReply::observe(\App\Observers\ContactReplyObserver::class);
         \App\Models\Contact::observe(\App\Observers\ContactObserver::class);
-
+        
         Paginator::useBootstrapFive();
         Schema::defaultStringLength(191);
         try{
@@ -56,6 +55,6 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
         });
-
+        
     }
 }
