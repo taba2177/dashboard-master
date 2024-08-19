@@ -29,7 +29,7 @@ class Page extends Model implements HasMedia
         if($this->image==null)
             return env('DEFAULT_IMAGE');
         else{
-            env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->image,$type);
+            dd(env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->image,$type));
             return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->image,$type);}
     }
 
