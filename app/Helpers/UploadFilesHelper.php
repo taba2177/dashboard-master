@@ -188,7 +188,7 @@ class UploadFilesHelper
 
         $temp_file = \App\Models\TempFile::create(['name'=>$options['temp_file_selector'],'user_id'=>auth()->check()?auth()->id():null]);
         $uploaded_file = $temp_file->addMedia($file)->toMediaCollection($options['type']);
-        dd($uploaded_file);
+
     /*    dd($uploaded_file);
 
 
@@ -315,7 +315,6 @@ class UploadFilesHelper
                   if(\Auth::check()){
                         $tm = \App\TicketMessage::where('id',$file->type_id)->firstOrFail();
                         if(\Auth::user()->hasRole("ADMIN") || $tm->ticket->user_id==\Auth::id()){
-
                               return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                                 substr($file->path, 1) .$file->name ,
                                 now()->addHour()
