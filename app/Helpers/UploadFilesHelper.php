@@ -309,7 +309,7 @@ class UploadFilesHelper
                 return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                     substr($file->path, 1) .$file->name ,
                     now()->addHour()
-                ),'public');
+                ));
             }
             else if($file->type=="ticket_message"){
                   if(\Auth::check()){
@@ -318,7 +318,7 @@ class UploadFilesHelper
                               return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                                 substr($file->path, 1) .$file->name ,
                                 now()->addHour()
-                            ),'public');
+                            ));
                         }
                   }
             }
