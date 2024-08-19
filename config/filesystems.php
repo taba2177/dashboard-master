@@ -32,17 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
-            'permissions' => [
-                'file' => [
-                    'public' => 0644,
-                    'private' => 0600,
-                ],
-                'dir' => [
-                    'public' => 0755,  // You can change this to 0775 if needed
-                    'private' => 0700,
-                ],
-            ],
+            'root' => storage_path('app/public'),
         ],
 
         'public' => [
@@ -88,7 +78,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app'),
+        public_path('storage') => storage_path('app/public'),
     ],
 
 ];
