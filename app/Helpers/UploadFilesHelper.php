@@ -318,7 +318,7 @@ class UploadFilesHelper
                               return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                                 substr($file->path, 1) .$file->name ,
                                 now()->addHour()
-                            ));
+                            ),'public');
                         }
                   }
             }
