@@ -62,11 +62,9 @@ class User extends Authenticatable implements HasMedia
     public function getUserAvatar($type="thumb"){
         if($this->avatar==null)
             return env('DEFAULT_IMAGE_AVATAR');
-        else{
-            
-
+        else
             return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->avatar,$type);
-    }}
+    }
 
     public function scopeWithoutTimestamps()
     {
