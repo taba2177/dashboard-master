@@ -304,6 +304,8 @@ class UploadFilesHelper
         if($file->visibility=="PRIVATE") {
             if(\Auth::check() && (\Auth::user()->hasRole("ADMIN") || $file->user_id == \Auth::user()->id ) )
             {
+                // chmod(env("STORAGE_URL").'/'.$explode[0] .'/'."conversions".'/'.$new_file_name, 0755);
+                dd($file->path);
                 return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
                     substr($file->path, 1) .$file->name ,
                     now()->addHour()
