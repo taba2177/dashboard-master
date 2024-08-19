@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
@@ -64,7 +63,7 @@ class User extends Authenticatable implements HasMedia
         if($this->avatar==null)
             return env('DEFAULT_IMAGE_AVATAR');
         else{
-            $path = Storage::disk('public')->path($this->avatar);
+            $path = \Storage::disk('public')->path($this->avatar);
             dd($path);
             return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->avatar,$type);
     }}
