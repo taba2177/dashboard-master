@@ -26,7 +26,7 @@ class User extends Authenticatable implements HasMedia
      *
      * @var array
      */
-    protected $guarded = [ 
+    protected $guarded = [
     ];
 
     /**
@@ -63,10 +63,11 @@ class User extends Authenticatable implements HasMedia
     public function getUserAvatar($type="thumb"){
         if($this->avatar==null)
             return env('DEFAULT_IMAGE_AVATAR');
-        else
+        else{
+            dd(env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->avatar,$type));
             return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->avatar,$type);
-    }
-    
+    }}
+
     public function scopeWithoutTimestamps()
     {
         $this->timestamps = false;
